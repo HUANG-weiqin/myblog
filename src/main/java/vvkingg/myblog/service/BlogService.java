@@ -1,15 +1,11 @@
-package vvkingg.myblog.mapper;
+package vvkingg.myblog.service;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 import vvkingg.myblog.common.SerarchBlogsInfo;
 import vvkingg.myblog.entity.Blog;
 
 import java.util.List;
 
-@Mapper
-@Repository
-public interface BlogMapper {
+public interface BlogService {
     public List<Blog> selectAll();
     public List<Blog> selectPage(SerarchBlogsInfo sf);
 }

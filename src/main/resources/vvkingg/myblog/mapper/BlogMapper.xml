@@ -6,4 +6,9 @@
     <select id="selectAll" resultType="vvkingg.myblog.entity.Blog">
         select * from blogs
     </select>
+
+    <select id="selectPage" resultType="vvkingg.myblog.entity.Blog">
+        select * from blogs limit #{offset},#{number}
+    </select>
+
 </mapper>
