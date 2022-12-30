@@ -18,7 +18,7 @@ public class HelloController {
         return userService.selectAll().toString();
     }
 
-    @RequestMapping("/login")
+    @RequestMapping("/logintest")
     public String sayLogin(){
 
         UsernamePasswordToken token = new UsernamePasswordToken("vvkingg","hwq741852896");
