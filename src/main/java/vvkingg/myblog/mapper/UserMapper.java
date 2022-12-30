@@ -9,5 +9,6 @@ import java.util.List;
 @Mapper
 @Repository
 public interface UserMapper {
-    public List<User> selectAll();
+    List<User> selectAll();
+    User selectByName(String name);
 }

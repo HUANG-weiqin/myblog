@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface UserService {
     public List<User> selectAll();
+    public User selectByName(String name);
 }
