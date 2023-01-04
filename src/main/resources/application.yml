@@ -1,6 +1,10 @@
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/myblog
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: hwq74185296
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

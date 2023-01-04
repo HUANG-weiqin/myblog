@@ -12,4 +12,6 @@ import java.util.List;
 public interface BlogMapper {
     public List<Blog> selectAll();
     public List<Blog> selectPage(SerarchBlogsInfo sf);
+
+    public int insertBlog(Blog b);
 }

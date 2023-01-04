@@ -3,13 +3,13 @@ package vvkingg.myblog.entity;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 public class Blog implements Serializable {
-
+    private int blog_id;
     private int author_id;
-    private String title;
-    private String descri;
-    private String content;
-
+    private String blog_title;
+    private String blog_content;
+    private Date modify_date;
 }

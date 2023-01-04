@@ -22,4 +22,9 @@ public class BlogServiceImp implements BlogService {
     public List<Blog> selectPage(SerarchBlogsInfo sf) {
         return blogMapper.selectPage(sf);
     }
+
+    @Override
+    public int insertBlog(Blog b) {
+        return blogMapper.insertBlog(b);
+    }
 }

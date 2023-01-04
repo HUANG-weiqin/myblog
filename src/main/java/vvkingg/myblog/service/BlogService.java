@@ -8,4 +8,5 @@ import java.util.List;
 public interface BlogService {
     public List<Blog> selectAll();
     public List<Blog> selectPage(SerarchBlogsInfo sf);
+    public int insertBlog(Blog b);
 }

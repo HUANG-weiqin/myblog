@@ -11,4 +11,14 @@
         select * from blogs limit #{offset},#{number}
     </select>
 
+    <insert id="insertBlog" useGeneratedKeys="true" keyProperty="blog_id" keyColumn="blog_id" >
+        insert into blogs (author_id,blog_title,blog_content,modify_date)
+        values (
+        #{author_id},
+        #{blog_title},
+        #{blog_content},
+        now()
+        )
+    </insert>
+
 </mapper>
