@@ -24,15 +24,47 @@ public class BlogController {
     private BlogService blogService;
     @PostMapping("/blogs")
     public Result blogs(SerarchBlogsInfo sf){
-        List<Blog> res = blogService.selectPage(sf);
+        List<Blog> res;
+        if(sf.getTag().length() == 0){
+            res = blogService.selectPage(sf);
+        }
+        else {
+            res = blogService.selectTagsPage(sf);
+        }
+        return Result.success("ok",res);
+    }
+
+    @RequestMapping("/blogsNumber")
+    public Result blogsNumber(){
+        int res = blogService.BlogsNumber();
+        return Result.success("ok",res);
+    }
+
+    @RequestMapping("/blogsNumberByTag")
+    public Result blogsNumberByTag(@RequestParam("tag")String tag){
+        int res = blogService.blogsNumberByTag(tag);
+        return Result.success("ok",res);
+    }
+
+    @RequestMapping("/allTags")
+    public Result AllTags(){
+        List<String> res = blogService.AllTags();
         return Result.success("ok",res);
     }
 
     @PostMapping("/add_blogs")
-    public Result blogs(Blog sf){
+    public Result addBlogs(Blog sf){
+
         sf.setAuthor_id(1);
         blogService.insertBlog(sf);
-        return Result.success("ok",sf.getBlog_id());
+        int id = sf.getBlog_id();
+        if(sf.getBlog_tags().length() > 0){
+            String [] tags = sf.getBlog_tags().split(",");
+            for(String tag :tags){
+                blogService.insertTagBlog(tag,id);
+            }
+        }
+        return Result.success("ok",id);
     }
 
     @RequestMapping("/upload_file")
@@ -56,5 +88,17 @@ public class BlogController {
         Map<String ,String > map = new HashMap<>();
         map.put("url","Files/" + randName);
         return Result.success("ok",map);
+    }
+
+    @RequestMapping("/delete_blog")
+    public Result DeleteBlog(@RequestParam("id") int id){
+        blogService.DeleteBlog(id);
+        return Result.success("ok",id);
+    }
+
+    @RequestMapping("/readBlog")
+    public Result readBlog(@RequestParam("id") int id){
+        blogService.readBlog(id);
+        return Result.success("ok",id);
     }
 }

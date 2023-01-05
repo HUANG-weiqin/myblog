@@ -6,4 +6,5 @@ import lombok.Data;
 public class SerarchBlogsInfo {
     private int offset;
     private int number;
+    private String tag;
 }

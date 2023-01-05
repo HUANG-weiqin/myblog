@@ -16,7 +16,6 @@ public class UserController {
     @PostMapping("/login")
     public Result login(LoginInfo lf){
         UsernamePasswordToken token = new UsernamePasswordToken(lf.getName(),lf.getPassword());
-        System.out.println(lf.getName()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+lf.getPassword());
         try {
             SecurityUtils.getSubject().login(token);
         }
